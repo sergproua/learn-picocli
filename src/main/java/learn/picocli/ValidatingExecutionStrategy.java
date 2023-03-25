@@ -16,7 +16,7 @@ public class ValidatingExecutionStrategy implements CommandLine.IExecutionStrate
         parseResult.asCommandLineList()
                 .stream()
                 // Exclude app level command (root)
-                .filter(commandLine -> !commandLine.getCommandSpec().name().equals("app"))
+                .filter(commandLine -> !commandLine.getCommandSpec().name().equals(CommandRoot.RootCommandName))
                 .parallel()
                 .forEach(commandLine -> new CommandLine.RunLast().execute(commandLine.getParseResult()));
 
