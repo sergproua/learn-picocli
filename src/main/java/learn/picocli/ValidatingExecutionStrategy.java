@@ -15,6 +15,8 @@ public class ValidatingExecutionStrategy implements CommandLine.IExecutionStrate
         // async execution strategy
         parseResult.asCommandLineList()
                 .stream()
+                // Exclude app level command (root)
+                .filter(commandLine -> !commandLine.getCommandSpec().name().equals("app"))
                 .parallel()
                 .forEach(commandLine -> new CommandLine.RunLast().execute(commandLine.getParseResult()));
 
