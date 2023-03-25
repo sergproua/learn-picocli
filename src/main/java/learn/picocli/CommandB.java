@@ -13,16 +13,11 @@ import java.util.concurrent.Callable;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Log4j2
 public class CommandB implements Callable<Integer> {
-    @CommandLine.ParentCommand
-    CommandRoot parent;
     @CommandLine.Option(names = {"-r", "--required"}, description = "I am required", required = true)
     Long param;
 
     @Override
     public Integer call() throws InterruptedException {
-        if (!parent.validateOnlyOnce("B"))
-            return -1;
-
         log.info("B command is running with {}", param);
         Thread.sleep(1000);
         log.info("B command has stopped");
