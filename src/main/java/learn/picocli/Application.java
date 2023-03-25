@@ -20,6 +20,7 @@ public class Application  implements CommandLineRunner, ExitCodeGenerator {
         exitCode = new CommandLine(commandroot, factory)
                 .addSubcommand(commandA)
                 .addSubcommand(commandB)
+                .setExecutionStrategy(new ValidatingExecutionStrategy())
                 .execute(args);
     }
 
