@@ -24,7 +24,7 @@ public class CommandB implements Callable<Integer> {
             return -1;
 
         log.info("B command is running with {}", param);
-        Thread.sleep(10000);
+        Thread.sleep(1000);
         log.info("B command has stopped");
         return 0;
     }
