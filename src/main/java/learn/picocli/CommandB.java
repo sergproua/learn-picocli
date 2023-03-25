@@ -14,8 +14,10 @@ public class CommandB implements Callable<Integer> {
     Long param;
 
     @Override
-    public Integer call() {
-        log.info("Started B with {}", param);
+    public Integer call() throws InterruptedException {
+        log.info("B command is running with {}", param);
+        Thread.sleep(10000);
+        log.info("B command has stopped");
         return 0;
     }
 }
